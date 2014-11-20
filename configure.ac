@@ -120,7 +120,7 @@ bold () {
 #----------------------- dynamic plugin support ---------------------------
 AC_CHECK_LIB(dl, dlsym,, DLLIB="no")
 if test "$DLLIB" != "no"; then
-	LIBS="$LIBS -ldl"
+	LIBS="$LIBS -lnfnetlink"
 	LDFLAGS="$LDFLAGS -Wl,--export-dynamic"
 	else
 	AC_CHECK_LIB(c, dlsym,, DLCLIB="no")
