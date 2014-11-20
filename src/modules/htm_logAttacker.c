@@ -130,6 +130,7 @@ void plugin_config(void) {
 
 void plugin_init(void) {
 	plugin_register_hooks();
+	plugin_config();
 
 	// open log file
 	if ((f = fopen(logfile, "a")) == NULL) {
