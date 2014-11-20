@@ -316,7 +316,7 @@ AC_ARG_ENABLE(devmodules,
                     CFLAGS="-O0 -DDEBUG -g"
                   else
                     CFLAGS="$CFLAGS -DDEBUG"
-                  fi      
+                  fi
 		  enable_devmodules="X"
                 ], enable_devmodules=" ")
 
@@ -754,6 +754,18 @@ else
 fi
 
 
+AC_ARG_WITH(logattacker,
+	[  --with-logattacker             log attacking IP addresses in a separate file])
+AM_CONDITIONAL(BUILD_LOGATTACKER_PLUGIN, test x$with_logattacker = xyes)
+if test "$with_logattacker" = "yes"; then
+  with_logattacker="X"
+
+  AC_DEFINE([USE_LOGATTACK], [], [Define to log attacking IP addresses in a separate file])
+else
+  with_logattacker=" "
+fi
+
+
 #-------------------------------------------------------------
 
 # Check for electric fence malloc debugger
@@ -820,6 +832,8 @@ echo
 bold "    (%B$with_magicpe%b)  magicPE"
 echo
 bold "    (%B$with_xmatch%b)  xmatch"
+echo
+bold "    (%B$with_logattacker%b)  logattacker"
 echo
 bold "    (%B$with_submit_mwserv%b)  submitMwserv"
 echo
